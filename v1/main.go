@@ -22,5 +22,6 @@ func NewInMemoryPlayerStore() *InMemoryPlayerStore {
 }
 
 func main() {
-	log.Fatal(http.ListenAndServe(":5000", &PlayerServer{NewInMemoryPlayerStore()}))
+	server := newPlayerServer(NewInMemoryPlayerStore())
+	log.Fatal(http.ListenAndServe(":5000", server))
 }
